@@ -430,9 +430,8 @@ $.extend($.validator, {
 				rulesCache = {};
 
 			// select all valid inputs inside the form (no submit or reset buttons)
-			// workaround $Query([]).add until http://dev.jquery.com/ticket/2114 is solved
-			return $([]).add(this.currentForm.elements)
-			.filter(":input")
+			return $(this.currentForm)
+			.children(":input")
 			.not(":submit, :reset, :image, [disabled]")
 			.not( this.settings.ignore )
 			.filter(function() {
